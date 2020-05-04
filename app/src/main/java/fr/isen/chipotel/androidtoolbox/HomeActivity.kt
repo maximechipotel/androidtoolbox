@@ -16,5 +16,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, CycleActivity::class.java)
             startActivity(intent)
         }
+
+        button_sauvegarde.setOnClickListener{
+            val intent = Intent(this, SaveActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

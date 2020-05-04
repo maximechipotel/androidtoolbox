@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProjetTrio"></activity>
+        <activity android:name=".SaveActivity"></activity>
+        <activity android:name=".FormulaireActivity" />
+        <activity android:name=".InscriptionActivity" />
+        <activity android:name=".NouveaucompteActivity" />
+        <activity android:name=".ProjetTrio" />
         <activity android:name=".FragmentOne" />
         <activity android:name=".FragmentActivity" />
         <activity android:name=".CycleActivity" />

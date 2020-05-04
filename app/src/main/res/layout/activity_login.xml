@@ -39,14 +39,13 @@
         android:layout_width="235dp"
         android:layout_height="47dp"
         android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
         android:ems="10"
         android:hint="Identifiant"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoisen" />
 
@@ -55,14 +54,13 @@
         android:layout_width="235dp"
         android:layout_height="47dp"
         android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
         android:ems="10"
         android:hint="Mot de passe"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_et" />
 
@@ -82,5 +80,37 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_et" />
+
+    <TextView
+        android:id="@+id/button_inscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="S'inscrire"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_valider"/>
+
+    <CheckBox
+        android:id="@+id/save_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSave"
+        android:text="Se souvenir de moi"
+        app:layout_constraintStart_toStartOf="@+id/password_et"
+        app:layout_constraintTop_toBottomOf="@+id/password_et" />
+
+    <TextView
+        android:id="@+id/clear_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:onClick="onClear"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="@+id/save_cb"
+        app:layout_constraintEnd_toEndOf="@+id/password_et"
+        app:layout_constraintTop_toTopOf="@+id/save_cb" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
