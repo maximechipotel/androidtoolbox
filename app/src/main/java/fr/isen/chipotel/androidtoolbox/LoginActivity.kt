@@ -2,6 +2,7 @@ package fr.isen.chipotel.androidtoolbox
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -11,6 +12,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
         editor.putString("email", email_et.text.toString())
         editor.putInt("password", password_et.text.toString().toInt())
         //commit change
-        editor.commit()
+        editor.apply()
 
         val toast = Toast.makeText(applicationContext, "Enregistrer",Toast.LENGTH_LONG)
         toast.setGravity(Gravity.TOP,0,200)
@@ -70,9 +72,10 @@ class LoginActivity : AppCompatActivity() {
         val pref = getPreferences(Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.clear()
-        editor.commit()
+        editor.apply()
 
         email_et.setText("")
         password_et.setText("")
     }
 }
+

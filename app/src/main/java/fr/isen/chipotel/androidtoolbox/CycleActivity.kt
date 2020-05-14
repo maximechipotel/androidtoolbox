@@ -22,22 +22,24 @@ class CycleActivity : AppCompatActivity() {
 
         val Change = findViewById<Button>(R.id.button_fragment)
         ShowFragmentOne()
-        Change.setOnClickListener(({
-            if(isFragmentOneLoaded)
+        Change.setOnClickListener {
+            if (isFragmentOneLoaded)
                 ShowFragmentTwo()
             else
-                ShowFragmentOne()}))
+                ShowFragmentOne()
+        }
 
     }
 
-    fun ShowFragmentOne(){
+    fun ShowFragmentOne() {
         val transaction = manager.beginTransaction()
         val fragment = FragmentOne()
-        transaction.replace(R.id.fragment_holder,fragment)
+        transaction.replace(R.id.fragment_holder, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
         isFragmentOneLoaded = true
     }
+
     fun ShowFragmentTwo() {
         val transaction = manager.beginTransaction()
         val fragment = FragmentTwo()
@@ -49,41 +51,41 @@ class CycleActivity : AppCompatActivity() {
 }
 
 
-   /* override fun onStart() {
-        super.onStart()
-        print("OnStart")
-        Toast.makeText(this,"onStart", Toast.LENGTH_SHORT).show()
-    }
+/* override fun onStart() {
+     super.onStart()
+     print("OnStart")
+     Toast.makeText(this,"onStart", Toast.LENGTH_SHORT).show()
+ }
 
-    override fun onResume() {
-        super.onResume()
-        print("onResume")
-        Toast.makeText(this,"onResume",Toast.LENGTH_SHORT).show()
-    }
+ override fun onResume() {
+     super.onResume()
+     print("onResume")
+     Toast.makeText(this,"onResume",Toast.LENGTH_SHORT).show()
+ }
 
-    override fun onPause() {
-        super.onPause()
-        print("onPause")
-    }
+ override fun onPause() {
+     super.onPause()
+     print("onPause")
+ }
 
-    override fun onStop() {
-        super.onStop()
-        print("onStop")
-    }
+ override fun onStop() {
+     super.onStop()
+     print("onStop")
+ }
 
-    override fun onRestart() {
-        super.onRestart()
-        print("onRestart")
-        Toast.makeText(this,"onRestart",Toast.LENGTH_SHORT).show()
-    }
+ override fun onRestart() {
+     super.onRestart()
+     print("onRestart")
+     Toast.makeText(this,"onRestart",Toast.LENGTH_SHORT).show()
+ }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        print("Destroy")
-    }
-    fun print(msg: String){
-        Log.d("Activity state",msg)
+ override fun onDestroy() {
+     super.onDestroy()
+     print("Destroy")
+ }
+ fun print(msg: String){
+     Log.d("Activity state",msg)
 
-    }
+ }
 */
 
