@@ -1,7 +1,6 @@
 package fr.isen.chipotel.androidtoolbox
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -27,7 +26,7 @@ class PermissionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_permission)
 
 
-        button_permission_contact.setOnClickListener {
+        pictureButton.setOnClickListener {
             onChangePhoto()
         }
 
@@ -59,8 +58,8 @@ class PermissionActivity : AppCompatActivity() {
             contactModel.displayName = displayName.toString()
             contactList.add(contactModel)
         }
-        contact_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        contact_recycler.adapter = ContactActivity(contactList)
+        contactRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        contactRecyclerView.adapter = ContactActivity(contactList)
     }
 
     override fun onRequestPermissionsResult(
@@ -95,11 +94,11 @@ class PermissionActivity : AppCompatActivity() {
         if(requestCode == PermissionActivity.pictureRequestCode &&
             resultCode == Activity.RESULT_OK) {
             if(data?.data != null) { // Gallery
-                button_permission_contact.setImageURI(data?.data)
+                pictureButton.setImageURI(data?.data)
             } else { // Camera
                 val bitmap = data?.extras?.get("data") as? Bitmap
                 bitmap?.let {
-                    button_permission_contact.setImageBitmap(it)
+                    pictureButton.setImageBitmap(it)
                 }
             }
         }

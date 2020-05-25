@@ -1,12 +1,10 @@
 package fr.isen.chipotel.androidtoolbox
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_contact.view.*
 import kotlinx.android.synthetic.main.recycler_view_contact_cell.view.*
 
 class ContactActivity(val contacts: ArrayList<ContactModel>): RecyclerView.Adapter<ContactActivity.ContactViewHolder>() {
