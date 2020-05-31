@@ -48,4 +48,5 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }

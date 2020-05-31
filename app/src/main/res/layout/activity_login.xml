@@ -81,36 +81,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_et" />
 
-    <TextView
-        android:id="@+id/button_inscription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="S'inscrire"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_valider"/>
-
-    <CheckBox
-        android:id="@+id/save_cb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="onSave"
-        android:text="Se souvenir de moi"
-        app:layout_constraintStart_toStartOf="@+id/password_et"
-        app:layout_constraintTop_toBottomOf="@+id/password_et" />
-
-    <TextView
-        android:id="@+id/clear_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:onClick="onClear"
-        android:text="Clear"
-        app:layout_constraintBottom_toBottomOf="@+id/save_cb"
-        app:layout_constraintEnd_toEndOf="@+id/password_et"
-        app:layout_constraintTop_toTopOf="@+id/save_cb" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,7 +25,7 @@ class WebServicesActivity : AppCompatActivity() {
     fun getUsers() {
 
         val queue = Volley.newRequestQueue(this)
-        val url = "https://randomapi.com/api/6de6abfedb24f889e0b5f675edc50deb?fmt=raw&sole"
+        val url = "https://randomuser.me/api/?results=20"
 
 
 
@@ -58,5 +58,4 @@ class WebServicesActivity : AppCompatActivity() {
 
         queue.add(stringReq)
     }
-
 }

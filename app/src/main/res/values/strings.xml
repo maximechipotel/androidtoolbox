@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">AndroidToolBox</string>
     <string name="toast_valider">Ok pour le Toast</string>
+    <string name="fields_empty"></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -5,77 +5,53 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
-import android.view.View
-
 import android.widget.Toast
+import fr.isen.chipotel.androidtoolbox.Models.Constants
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
 
+    var userPref: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
+        userPref = getSharedPreferences(Constants.UserPreferencesName, Context.MODE_PRIVATE)
+        checkPreferences()
         button_valider.setOnClickListener {
-
-            if(email_et.text.toString().equals("admin")
-                && password_et.text.toString().equals("123"))
-            {
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-                Toast.makeText(this,"Bienvenue",Toast.LENGTH_LONG).show()
-            }
-
-            else
-                Toast.makeText(this,"Mot de passe ou email incorrect",Toast.LENGTH_LONG).show()
+            doLogin()
 
         }
+    }
 
-        button_inscription.setOnClickListener{
-            val intent = Intent(this, InscriptionActivity::class.java)
+    fun doLogin(){
+        if (canLog(email_et.text.toString(), password_et.text.toString())){
+            saveUser(email_et.text.toString(),password_et.text.toString())
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
-
-
     }
 
-    override fun onResume() {
-        super.onResume()
-        val pref = getPreferences(Context.MODE_PRIVATE)
-        val email = pref.getString("email ", "")
-        val password = pref.getInt("password",0)
-
-        email_et.setText(email)
-        password_et.setText(password.toString())
+    fun canLog(identifier: String, password: String): Boolean {
+        return identifier == Constants.goodIdentifier && password == Constants.goodPassword
     }
 
-    fun onSave(view: View) {
-
-        val pref = getPreferences(Context.MODE_PRIVATE)
-        val editor = pref.edit()
-
-        editor.putString("email", email_et.text.toString())
-        editor.putInt("password", password_et.text.toString().toInt())
-        //commit change
-        editor.apply()
-
-        val toast = Toast.makeText(applicationContext, "Enregistrer",Toast.LENGTH_LONG)
-        toast.setGravity(Gravity.TOP,0,200)
-        toast.show()
-
+    fun saveUser(identifier: String, password: String){
+        val editor = userPref?.edit()
+        editor?.putString(Constants.kIdentifier, identifier)
+        editor?.putString(Constants.kPassword, password)
+        editor?.commit()
     }
 
-    fun onClear(view: View) {
-        val pref = getPreferences(Context.MODE_PRIVATE)
-        val editor = pref.edit()
-        editor.clear()
-        editor.apply()
-
-        email_et.setText("")
-        password_et.setText("")
+    fun checkPreferences(){
+        val identifier = userPref?.getString(Constants.kIdentifier, null) ?:""
+        val password = userPref?.getString(Constants.kPassword, null) ?:""
+        email_et.setText(identifier)
+        password_et.setText(password)
+        doLogin()
     }
 }
 

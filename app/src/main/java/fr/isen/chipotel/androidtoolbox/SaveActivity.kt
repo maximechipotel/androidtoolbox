@@ -1,17 +1,13 @@
 package fr.isen.chipotel.androidtoolbox
-
-
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-
 import kotlinx.android.synthetic.main.activity_save.*
 import org.json.JSONObject
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class SaveActivity : AppCompatActivity() {
 
@@ -28,15 +24,15 @@ class SaveActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save)
 
-        button_save_json.setOnClickListener {
+        button_save_to_json.setOnClickListener {
             save()
         }
 
-        button_display.setOnClickListener {
+        button_read.setOnClickListener {
             read()
         }
 
-         birth_et.setOnFocusChangeListener { view, hasFocus ->
+        birth_et.setOnFocusChangeListener { view, hasFocus ->
             if(hasFocus) {
                 birth_et.clearFocus()
                 val dialog = DatePickerDialog(this,
@@ -52,19 +48,25 @@ class SaveActivity : AppCompatActivity() {
     }
 
     fun save() {
+        if (first_name_et.text.toString().isNotEmpty() &&
+            last_name_et.text.toString().isNotEmpty() &&
+            birth_et.text.toString().isNotEmpty()) {
+            val json = JSONObject()
+            json.put(SaveActivity.kFirstNameKey, first_name_et.text.toString())
+            json.put(SaveActivity.kLastNameKey, last_name_et.text.toString())
+            json.put(SaveActivity.kBirthDay, birth_et.text.toString())
+            Toast.makeText(this, json.toString(), Toast.LENGTH_LONG).show()
 
-        val json = JSONObject()
-        json.put(SaveActivity.kFirstNameKey, first_name_et.text.toString())
-        json.put(SaveActivity.kLastNameKey, last_name_et.text.toString())
-        json.put(SaveActivity.kBirthDay, birth_et.text.toString())
-        Toast.makeText(this, json.toString(), Toast.LENGTH_LONG).show()
+            val file = File(cacheDir.absolutePath+"/"+SaveActivity.kFilename)
+            file.writeText(json.toString())
 
-        val file = File(cacheDir.absolutePath+"/"+ kFilename)
-        file.writeText(json.toString())
+        } else {
+            Toast.makeText(this, R.string.fields_empty, Toast.LENGTH_LONG).show()
+        }
     }
 
     fun read() {
-        val file = File(cacheDir.absolutePath+"/"+ kFilename)
+        val file = File(cacheDir.absolutePath+"/"+SaveActivity.kFilename)
         val readString = file.readText()
         val json = JSONObject(readString)
         val dateString = json.getString(SaveActivity.kBirthDay)
@@ -91,7 +93,4 @@ class SaveActivity : AppCompatActivity() {
         return age
     }
 }
-
-
-
 

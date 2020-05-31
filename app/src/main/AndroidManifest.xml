@@ -7,8 +7,8 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,12 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PermissionActivity"></activity>
-        <activity android:name=".testAvtivity" />
+        <activity android:name=".FirstFragment"></activity>
+        <activity android:name=".PermissionActivity" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".WebServicesActivity" />
         <activity android:name=".SaveActivity" />
-        <activity android:name=".InscriptionActivity" />
         <activity android:name=".FragmentOne" />
         <activity android:name=".CycleActivity" />
         <activity android:name=".HomeActivity" />
